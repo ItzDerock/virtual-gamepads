@@ -139,7 +139,15 @@
         </div>
 
         <script>
-            const wsUrl = `ws://${window.location.hostname}:3000/ws`;
+            // read or create a unique uuidv4 from localstorage
+            let clientId = localStorage.getItem("clientId");
+            if (!clientId) {
+                clientId = crypto.randomUUID();
+                localStorage.setItem("clientId", clientId);
+            }
+
+            let pingSentAt = 0;
+            const wsUrl = `ws://${window.location.hostname}:3000/ws?client_id=${clientId}`;
             let ws = new WebSocket(wsUrl);
             const statusDiv = document.getElementById("status");
 
@@ -217,6 +225,21 @@
                     document.exitFullscreen();
                 }
             });
+
+            // every 5 seconds, send a ping to keep the connection alive
+            setInterval(() => {
+                send({ kind: "ping" });
+                pingSentAt = Date.now();
+            }, 5000);
+
+            // listen for pong responses to measure latency
+            ws.onmessage = (event) => {
+                const msg = JSON.parse(event.data);
+                if (msg.kind === "pong") {
+                    const latency = Date.now() - pingSentAt;
+                    statusDiv.textContent = `Connected - ${latency} ms`;
+                }
+            };
         </script>
     </body>
 </html>
