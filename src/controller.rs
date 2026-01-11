@@ -35,7 +35,7 @@ impl VirtualGamepad {
         );
 
         let device = VirtualDeviceBuilder::new()?
-            .name("Rust Web Controller")
+            .name(&format!("Web Controller {}", id))
             .input_id(InputId::new(
                 // Xbox 360 IDs
                 evdev::BusType::BUS_USB,

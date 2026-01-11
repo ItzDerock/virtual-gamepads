@@ -91,7 +91,7 @@ impl SocketController {
         ws: WebSocketUpgrade,
     ) -> impl IntoResponse {
         ws.on_upgrade(move |mut socket| async move {
-            println!("New connection!");
+            println!("New connection from client: {}", params.client_id);
 
             // create or get the virtual gamepad for this client
             let client_id = match Uuid::parse_str(&params.client_id) {

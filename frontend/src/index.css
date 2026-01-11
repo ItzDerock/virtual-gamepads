@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+#root {
+  @apply h-full w-full;
+}
+
+html,
+body {
+  @apply touch-none overscroll-none bg-gray-900 h-full w-full;
+}
