@@ -76,7 +76,6 @@ export const ABXY = ({ onInteract, size = 80 }: ABXYProps) => {
         gridTemplateColumns: `${size}px ${size}px ${size}px`,
         gridTemplateRows: `${size}px ${size}px ${size}px`,
         gap: "10px",
-        // Critical mobile styles
         userSelect: "none",
         WebkitUserSelect: "none",
         touchAction: "none",

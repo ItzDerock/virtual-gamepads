@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-button-bg: #333;
+  --color-button-border: #444;
+  --color-button-pressed-bg: #555;
+  --color-joystick-nipple: #121212;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   @apply h-full w-full;
 }

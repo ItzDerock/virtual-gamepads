@@ -10,6 +10,8 @@ controllers if you want to play games on the TV with friends.
 > [!NOTE]
 > This app is still WIP. Functionality works, but there is room for improvement.
 
+![Image of Interface](./assets/screenshot.png)
+
 ## Usage
 
 This app only supports Linux at the moment, and has been tested with Steam. You
@@ -22,7 +24,10 @@ Then, start/build the app:
 cargo run --release
 ```
 
-And open port :3000. Now, have all players navigate to `http://<your ip>:3000`.
+You will need the rust toolchain and nodejs with pnpm.
+
+Open port :3000 on your firewall (if applicable).
+Now, have all players navigate to `http://<your ip>:3000`.
 
 ## TODO
 
